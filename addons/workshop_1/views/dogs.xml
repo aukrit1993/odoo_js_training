@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<!--ACTIONS-->
+<record id="action_dogs_tree" model="ir.actions.act_window">
+    <field name="name">Dogs</field>
+    <field name="res_model">dogs</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<!--MODEL VIEWS-->
+<record id="view_customer_customer_tree" model="ir.ui.view">
+    <field name="name">view.dogs.tree</field>
+    <field name="model">dogs</field>
+    <field name="arch" type="xml">
+        <tree string="Dogs">
+            <field name="name" />
+            <field name="breed"/>
+        </tree>
+    </field>
+</record>
+</odoo>

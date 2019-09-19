@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+
+  odoo:
+    image: odoo:10.0
+    volumes:
+      - ./addons/:/mnt/extra-addons/
+      # - ./standard/:/usr/lib/python2.7/dist-packages/odoo/addons
+    environment:
+      - TERM=xterm
+    ports:
+      - "8069:8069"
+    networks: 
+      workshop:
+    stdin_open: true
+    tty: true
+    command: odoo ${OPTIONS}
+
+  db:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./db:/var/lib/postgresql
+    networks: 
+      workshop:
+
+networks:
+  workshop:

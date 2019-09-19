@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- Define the dogs popup widget template -->
+    <t t-name="DogsPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup">
+                <div class="title" style="margin-bottom: 0px;">
+                    <span>
+                        <t t-esc="widget.options.title"/>
+                    </span>
+                </div>
+                <div class="body">
+                    <div>
+                        <!-- Create a table to insert data from the Dogs Model -->
+                        <table border="1" frame="void" rules="rows">
+                            <!-- Define Table Headers -->
+                            <tr>
+                                <th><p>Name</p></th>
+                                <th style="width: 100px;"><p>Breed</p></th>
+                                <th></th>
+                            </tr>
+                            <!-- Loop Through Each Item in Lines -->
+                            <t t-foreach="widget.options.lines || []" t-as="line">
+                                <tr t-att-line-id="line.id" t-att-line-name="line.name" class="dogs_tr">
+                                    <td>
+                                        <t t-esc="line.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.breed"/>
+                                    </td>
+                                    <td style="width: 200px;">
+                                        <input type="checkbox"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="footer" style="background: #f0eeee;">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- Adding button to the payment screen widget -->
+    <t t-extend="ProductScreenWidget">
+        <t t-jquery="div.subwindow-container-fix.pads" t-operation='replace'>
+            <button id="open_dogs">Dogs</button>
+            <div class="control-buttons oe_hidden"></div>
+            <div class="placeholder-ActionpadWidget"></div>
+            <div class="placeholder-NumpadWidget"></div>
+        </t>
+    </t>
+
+</templates>
